@@ -1,0 +1,15 @@
+diff --git a/svn-current/trunk/makefile.libretro b/svn-current/trunk/makefile.libretro
+index 129ea58..c6b1bf2 100644
+--- a/svn-current/trunk/makefile.libretro
++++ b/svn-current/trunk/makefile.libretro
+@@ -375,8 +375,8 @@ ifeq ($(DEBUG), 1)
+ CFLAGS += -O0 -g
+ CXXFLAGS += -O0 -g
+ else
+-CFLAGS += -O3 -DNDEBUG
+-CXXFLAGS += -O3 -DNDEBUG
++CFLAGS += -DNDEBUG
++CXXFLAGS += -DNDEBUG
+ endif
+ 
+ ifeq ($(platform), sncps3)

@@ -1,0 +1,13 @@
+diff --git a/libretro/Makefile b/libretro/Makefile
+index 1ceb525..0aaf7c1 100644
+--- a/libretro/Makefile
++++ b/libretro/Makefile
+@@ -118,7 +118,7 @@ else
+    CODE_DEFINES = -fomit-frame-pointer
+ endif
+ 
+-CXXFLAGS    += -O3 $(CODE_DEFINES) -fno-exceptions -fno-rtti -pedantic $(WARNINGS_DEFINES) $(fpic)
++CXXFLAGS    += $(CODE_DEFINES) -fno-exceptions -fno-rtti -pedantic $(WARNINGS_DEFINES) $(fpic)
+ CXXFLAGS    += -DHAVE_STRINGS_H -DHAVE_STDINT_H -DRIGHTSHIFT_IS_SAR -D__LIBRETRO__
+ CFLAGS     = $(CXXFLAGS)
+ 

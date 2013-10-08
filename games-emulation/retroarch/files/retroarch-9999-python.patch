@@ -1,0 +1,13 @@
+diff --git a/qb/config.libs.sh b/qb/config.libs.sh
+index e19ac3b..b9e16db 100644
+--- a/qb/config.libs.sh
++++ b/qb/config.libs.sh
+@@ -247,7 +247,7 @@ fi
+ 
+ check_lib STRL -lc strlcpy
+ 
+-check_pkgconf PYTHON python3
++check_pkgconf PYTHON python-%PYTHON_VER%
+ 
+ check_macro NEON __ARM_NEON__
+ 

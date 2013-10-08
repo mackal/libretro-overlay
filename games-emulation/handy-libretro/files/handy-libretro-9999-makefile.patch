@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index b3f0983..1fdc851 100644
+--- a/Makefile
++++ b/Makefile
+@@ -54,7 +54,7 @@ LIBS = -lz
+ 
+ INCDIRS = -Ilynx/ -Ilibretro/
+ 
+-FLAGS := -O3 -fomit-frame-pointer -fno-tree-vectorize -I. $(fpic) $(libs) $(includes)
++FLAGS := -fomit-frame-pointer -fno-tree-vectorize -I. $(fpic) $(libs) $(includes)
+ CXXFLAGS += $(FLAGS)
+ CFLAGS += $(FLAGS)
+ 

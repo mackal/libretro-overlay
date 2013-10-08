@@ -1,0 +1,17 @@
+diff --git a/Makefile.libretro b/Makefile.libretro
+index fac0ef7..6043e6e 100644
+--- a/Makefile.libretro
++++ b/Makefile.libretro
+@@ -223,10 +223,10 @@ endif
+ DEBUG=0
+ ifeq ($(DEBUG), 1)
+    CPPFLAGS += -g
+-   OPTIMIZE = -O0
++   OPTIMIZE = $(CXXFLAGS)
+ else
+    CPPFLAGS += -DNDEBUG
+-   OPTIMIZE = -O3
++   OPTIMIZE = $(CXXFLAGS)
+ endif
+ 
+ ifeq ($(RETRO_PROFILE),1)

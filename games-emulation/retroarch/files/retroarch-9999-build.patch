@@ -1,0 +1,70 @@
+diff --git a/Makefile b/Makefile
+index b4c5408..06e9429 100644
+--- a/Makefile
++++ b/Makefile
+@@ -268,7 +268,7 @@ ifeq ($(HAVE_CG), 1)
+    ifeq ($(OSX), 1)
+       LIBS += -framework Cg
+    else
+-      LIBS += -lCg -lCgGL
++      LIBS += -I/opt/nvidia-cg-toolkit/include -lCg -lCgGL
+    endif
+ endif
+ 
+@@ -422,14 +422,14 @@ tools/input_common_joyconfig.o: input/input_common.c
+ install: $(TARGET)
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin 2>/dev/null || /bin/true
+ 	mkdir -p $(DESTDIR)$(GLOBAL_CONFIG_DIR) 2>/dev/null || /bin/true
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1 2>/dev/null || /bin/true
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/pixmaps 2>/dev/null || /bin/true
++	mkdir -p $(DESTDIR)/usr/share/man/man1 2>/dev/null || /bin/true
++	mkdir -p $(DESTDIR)/usr/share/pixmaps 2>/dev/null || /bin/true
+ 	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/bin 
+ 	install -m755 tools/cg2glsl.py $(DESTDIR)$(PREFIX)/bin/retroarch-cg2glsl
+ 	install -m644 retroarch.cfg $(DESTDIR)$(GLOBAL_CONFIG_DIR)/retroarch.cfg
+ 	install -m644 docs/retroarch.1 $(DESTDIR)$(MAN_DIR)
+ 	install -m644 docs/retroarch-joyconfig.1 $(DESTDIR)$(MAN_DIR)
+-	install -m644 media/retroarch.png $(DESTDIR)$(PREFIX)/share/pixmaps
++	install -m644 media/retroarch.png $(DESTDIR)/usr/share/pixmaps
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
+diff --git a/qb/config.libs.sh b/qb/config.libs.sh
+index 7c8b81f..8ecd2dc 100644
+--- a/qb/config.libs.sh
++++ b/qb/config.libs.sh
+@@ -158,6 +158,12 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
+       check_lib CG "-framework Cg" cgCreateContext
+    else
+       # On some distros, -lCg doesn't link against -lstdc++ it seems ...
++       if [ -d /usr/lib64 ]; then
++           [ -d /opt/nvidia-cg-toolkit/lib64 ] && add_library_dirs /opt/nvidia-cg-toolkit/lib64
++       else
++           [ -d /opt/nvidia-cg-toolkit/lib ] && add_library_dirs /opt/nvidia-cg-toolkit/lib
++       fi
++       [ -d /opt/nvidia-cg-toolkit/include ] && add_include_dirs /opt/nvidia-cg-toolkit/include
+       check_lib_cxx CG -lCg cgCreateContext
+    fi
+ else
+diff --git a/qb/qb.params.sh b/qb/qb.params.sh
+index 9f8f180..6a8024a 100644
+--- a/qb/qb.params.sh
++++ b/qb/qb.params.sh
+@@ -40,7 +40,7 @@ EOF
+ opt_exists() # $opt is returned if exists in OPTS
+ {	opt=$(echo "$1" | tr '[a-z]' '[A-Z]')
+ 	for OPT in $OPTS; do [ "$opt" = "$OPT" ] && return; done
+-	print_help; exit 1
++	print_help; echo "Unknown option $1"
+ }
+ 
+ parse_input() # Parse stuff :V
+@@ -68,7 +68,7 @@ parse_input() # Parse stuff :V
+ 				eval "$opt=$val"
+ 			;;
+ 			-h|--help) print_help; exit 0;;
+-			*) print_help; exit 1;;
++			*) print_help; echo "Unknown option $1";;
+ 		esac
+ 		shift
+ 	done

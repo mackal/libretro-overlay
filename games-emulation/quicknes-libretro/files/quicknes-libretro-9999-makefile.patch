@@ -1,0 +1,20 @@
+diff --git a/libretro/Makefile b/libretro/Makefile
+index 20f9564..bd3e584 100644
+--- a/libretro/Makefile
++++ b/libretro/Makefile
+@@ -122,11 +122,11 @@ endif
+ all: $(TARGET)
+ 
+ ifeq ($(DEBUG), 1)
+-   CFLAGS += -O0 -g
+-   CXXFLAGS += -O0 -g
++   CFLAGS += -g
++   CXXFLAGS += -g
+ else
+-   CFLAGS += -O3
+-   CXXFLAGS += -O3
++   CFLAGS +=
++   CXXFLAGS +=
+ endif
+ 
+ EMU_DIR := ../nes_emu

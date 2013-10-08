@@ -1,0 +1,13 @@
+diff --git a/Makefile.libretro b/Makefile.libretro
+index cf4fe4c..c1956b9 100644
+--- a/Makefile.libretro
++++ b/Makefile.libretro
+@@ -75,7 +75,7 @@ endif
+ ifeq ($(DEBUG), 1)
+ CPPFLAGS += -O0 -g
+ else
+-CPPFLAGS += -O3
++CPPFLAGS +=
+ endif
+ 
+ 

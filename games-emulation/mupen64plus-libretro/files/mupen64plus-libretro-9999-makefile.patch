@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 523e52f..4526e50 100644
+--- a/Makefile
++++ b/Makefile
+@@ -217,10 +217,10 @@ CPPFLAGS += -DGLES
+ endif
+ 
+ ifeq ($(DEBUG), 1)
+-   CPPFLAGS += -O0 -g
++   CPPFLAGS += -g
+    CPPFLAGS += -DOPENGL_DEBUG
+ else
+-   CPPFLAGS += -O3
++   CPPFLAGS +=
+ endif
+ 
+ all: $(TARGET)

@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 12e8048..b867f90 100644
+--- a/Makefile
++++ b/Makefile
+@@ -528,9 +528,9 @@ OBJECTS := $(SOURCES:.cpp=.o) $(SOURCES_C:.c=.o)
+ all: $(TARGET)
+ 
+ ifeq ($(DEBUG),0)
+-   FLAGS += -O2 $(EXTRA_GCC_FLAGS)
++   FLAGS += $(EXTRA_GCC_FLAGS)
+ else
+-   FLAGS += -O0 -g
++   FLAGS += -g
+ endif
+ 
+ LDFLAGS += $(fpic) $(SHARED)
