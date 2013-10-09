@@ -35,6 +35,7 @@ src_compile() {
 				ui=target-libretro \
 				profile=${i#profile_}
 			mv "${WORKDIR}/${P}/out/bsnes_libretro.so" "${WORKDIR}/${P}/out/bsnes_${i#profile_}_libretro.so"
+			emake clean # need to clean between profiles
 		fi
 	done
 }
