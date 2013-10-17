@@ -46,10 +46,9 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	for i in profile_accuracy profile_balanced profile_performance ; do
-		if use ${i} ; then
-			cp "${S}/out/bsnes_${i#profile_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
-		fi
+	local retrodir="$(games_get_libdir)/libretro"
+	dodir ${retrodir}
+	for i in out/bsnes_*_libretro.so; do
+		install -m0755 "${i}" "${D}/${retrodir}"
 	done
 }

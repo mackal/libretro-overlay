@@ -34,6 +34,7 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	cp "${S}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
+	local retrodir="$(games_get_libdir)/libretro"
+	dodir ${retrodir}
+	install -m0755 "${PN//-/_}.so" "${D}${retrodir}"
 }

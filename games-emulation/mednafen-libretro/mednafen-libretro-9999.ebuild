@@ -32,17 +32,16 @@ src_prepare() {
 src_compile() {
 	for i in gba snes psx wswan ngp vb pce-fast ; do
 		if use ${i} ; then
-			emake clean #build system weird
 			emake core=${i} TARGET=mednafen_${i//-/_}_libretro.so
+			emake clean #build system weird
 		fi
 	done
 }
 
 src_install() {
-	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	for i in gba snes psx wswan ngp vb pce-fast ; do
-		if use ${i} ; then
-			cp "${S}/mednafen_${i//-/_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
-		fi
+	local retrodir="$(games_get_libdir)/libretro"
+	dodir ${retrodir}
+	for i in mednafen_*_libretro.so ; do
+		install -m0755 "${i}" "${D}${retrodir}"
 	done
 }
