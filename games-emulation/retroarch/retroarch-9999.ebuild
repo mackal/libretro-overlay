@@ -52,6 +52,7 @@ src_prepare() {
 			-e "s:%PYTHON_VER%:${PYTHON_LIBS/python/}:" \
 			|| die
 	fi
+	echo "libretro_path = \"$(games_get_libdir)/libretro\"" >> retroarch.cfg
 }
 
 src_configure() {

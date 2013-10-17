@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake TARGET=${PN//-/_}.so
+	emake TARGET=${PN//-/_}.so WITH_DYNAREC="$(uname -m)"
 }
 
 src_install() {
