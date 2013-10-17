@@ -20,8 +20,9 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+# We don't need to do the config script for this
 src_configure() {
-	sleep 0
+	true
 }
 
 src_compile() {
@@ -30,5 +31,5 @@ src_compile() {
 
 src_install() {
 	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	cp "${WORKDIR}/${P}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
+	cp "${S}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
 }

@@ -21,7 +21,12 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	sed -i \
+		-e 's/ -O[23]/ /' \
+		-e 's/ -fomit-frame-pointer/ /' \
+		-e 's/ -funroll-loops/ /' \
+		-e 's/ -ffast-math/ /' \
+		Makefile || die "sed failed"
 }
 
 src_compile() {
@@ -37,7 +42,7 @@ src_install() {
 	mkdir -p "${D}/$(games_get_libdir)/libretro"
 	for i in gba snes psx wswan ngp vb pce-fast ; do
 		if use ${i} ; then
-			cp "${WORKDIR}/${P}/mednafen_${i//-/_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
+			cp "${S}/mednafen_${i//-/_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
 		fi
 	done
 }

@@ -25,7 +25,12 @@ RDEPEND=""
 DEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	sed -i \
+		-e 's/ -O[23]/ /' \
+		-e 's/ -fomit-frame-pointer/ /' \
+		-e 's/ -funroll-loops/ /' \
+		-e 's/ -ffast-math/ /' \
+		Makefile || die "sed failed"
 }
 
 src_compile() {
@@ -34,7 +39,7 @@ src_compile() {
 			emake \
 				ui=target-libretro \
 				profile=${i#profile_}
-			mv "${WORKDIR}/${P}/out/bsnes_libretro.so" "${WORKDIR}/${P}/out/bsnes_${i#profile_}_libretro.so"
+			mv "${S}/out/bsnes_libretro.so" "${S}/out/bsnes_${i#profile_}_libretro.so"
 			emake clean # need to clean between profiles
 		fi
 	done
@@ -44,7 +49,7 @@ src_install() {
 	mkdir -p "${D}/$(games_get_libdir)/libretro"
 	for i in profile_accuracy profile_balanced profile_performance ; do
 		if use ${i} ; then
-			cp "${WORKDIR}/${P}/out/bsnes_${i#profile_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
+			cp "${S}/out/bsnes_${i#profile_}_libretro.so" "${D}/$(games_get_libdir)/libretro"
 		fi
 	done
 }

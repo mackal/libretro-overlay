@@ -22,7 +22,12 @@ DEPEND="sys-libs/zlib
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	sed -i \
+		-e 's/ -O[23]/ /' \
+		-e 's/ -fomit-frame-pointer/ /' \
+		-e 's/ -funroll-loops/ /' \
+		-e 's/ -ffast-math/ /' \
+		Makefile || die "sed failed"
 }
 
 src_compile() {
@@ -31,5 +36,5 @@ src_compile() {
 
 src_install() {
 	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	cp "${WORKDIR}/${P}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
+	cp "${S}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
 }

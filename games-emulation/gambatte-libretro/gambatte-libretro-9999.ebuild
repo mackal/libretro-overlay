@@ -20,16 +20,23 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+EGIT_SOURCEDIR=${S}
+S="${WORKDIR}/${P}/libgambatte"
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	sed -i \
+		-e 's/ -O[23]/ /' \
+		-e 's/ -fomit-frame-pointer/ /' \
+		-e 's/ -funroll-loops/ /' \
+		-e 's/ -ffast-math/ /' \
+		Makefile.libretro || die "sed failed"
 }
 
 src_compile() {
-	cd "${WORKDIR}/${P}/libgambatte"
 	emake -f Makefile.libretro TARGET=${PN//-/_}.so
 }
 
 src_install() {
 	mkdir -p "${D}/$(games_get_libdir)/libretro"
-	cp "${WORKDIR}/${P}/libgambatte/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
+	cp "${S}/${PN//-/_}.so" "${D}/$(games_get_libdir)/libretro"
 }
