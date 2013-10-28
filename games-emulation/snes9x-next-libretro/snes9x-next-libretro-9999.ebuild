@@ -12,7 +12,7 @@ SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/libretro/snes9x-next.git"
 
-LICENSE="GPL-3"
+LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"
 KEYWORDS=""
 IUSE=""

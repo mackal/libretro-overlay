@@ -12,7 +12,7 @@ SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/libretro/${PN}.git"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="gba snes psx +wswan +ngp +vb +pce-fast"

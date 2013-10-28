@@ -12,7 +12,7 @@ SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/libretro/Genesis-Plus-GX.git"
 
-LICENSE="GPL-3"
+LICENSE="XMAME"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
