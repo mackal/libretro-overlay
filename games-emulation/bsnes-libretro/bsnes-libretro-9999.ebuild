@@ -10,7 +10,7 @@ DESCRIPTION="bsnes emulation core ported to libretro"
 HOMEPAGE="http://gitorious.org/bsnes/bsnes"
 SRC_URI=""
 
-EGIT_REPO_URI="git://gitorious.org/bsnes/bsnes.git"
+EGIT_REPO_URI="https://git.gitorious.org/bsnes/bsnes.git"
 EGIT_BRANCH="libretro"
 
 LICENSE="GPL-2"
