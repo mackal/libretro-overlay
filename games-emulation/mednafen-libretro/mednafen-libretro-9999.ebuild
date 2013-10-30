@@ -44,4 +44,5 @@ src_install() {
 	for i in mednafen_*_libretro.so ; do
 		install -m0755 "${i}" "${D}${retrodir}"
 	done
+	prepgamesdirs
 }

@@ -54,4 +54,5 @@ src_install() {
 	for i in out/bsnes_*_libretro.so; do
 		install -m0755 "${i}" "${D}/${retrodir}"
 	done
+	prepgamesdirs
 }

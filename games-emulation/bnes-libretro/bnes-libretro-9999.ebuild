@@ -39,4 +39,5 @@ src_install() {
 	local retrodir="$(games_get_libdir)/libretro"
 	dodir ${retrodir}
 	install -m0755 "${PN//-/_}.so" "${D}${retrodir}"
+	prepgamesdirs
 }
