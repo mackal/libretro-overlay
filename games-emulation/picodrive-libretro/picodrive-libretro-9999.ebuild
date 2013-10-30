@@ -20,6 +20,15 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	sed -i \
+		-e 's/ -O[23]/ /' \
+		-e 's/ -fomit-frame-pointer/ /' \
+		-e 's/ -funroll-loops/ /' \
+		-e 's/ -ffast-math/ /' \
+		Makefile || die "sed failed"
+}
+
 # We don't need to do the config script for this
 src_configure() {
 	true
