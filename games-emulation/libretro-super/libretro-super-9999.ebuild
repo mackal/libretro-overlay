@@ -41,9 +41,10 @@ games-emulation/yabause-libretro
 games-emulation/retroarch"
 
 src_install() {
-	local retrodir="$(games_get_libdir)/libretro"
+	local retrodir="${GAMES_DATADIR}/retroarch/info"
 	dodir ${retrodir}
 	for i in dist/info/*.info ; do
 		install -m0644 "${i}" "${D}${retrodir}"
 	done
+	prepgamesdirs
 }

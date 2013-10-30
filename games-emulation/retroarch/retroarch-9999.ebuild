@@ -53,6 +53,7 @@ src_prepare() {
 			|| die
 	fi
 	echo "libretro_path = \"$(games_get_libdir)/libretro\"" >> retroarch.cfg
+	echo "libretro_info_path = \"${GAMES_DATADIR}/retroarch/info\"" >> retroarch.cfg
 }
 
 src_configure() {
