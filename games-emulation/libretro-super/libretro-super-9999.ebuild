@@ -23,8 +23,6 @@ games-emulation/bsnes-libretro
 games-emulation/desmume-libretro
 games-emulation/dosbox-libretro
 games-emulation/fb-alpha-libretro
-games-emulation/fceu-libretro
-games-emulation/fceu-next-libretro
 games-emulation/fceumm-libretro
 games-emulation/gambatte-libretro
 games-emulation/genesis-plus-gx-libretro
