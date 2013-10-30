@@ -26,7 +26,6 @@ games-emulation/fb-alpha-libretro
 games-emulation/fceumm-libretro
 games-emulation/gambatte-libretro
 games-emulation/genesis-plus-gx-libretro
-games-emulation/genplus-libretro
 games-emulation/handy-libretro
 games-emulation/mednafen-libretro
 games-emulation/mupen64plus-libretro
@@ -36,7 +35,6 @@ games-emulation/quicknes-libretro
 games-emulation/snes9x-libretro
 games-emulation/snes9x-next-libretro
 games-emulation/stella-libretro
-games-emulation/vba-libretro
 games-emulation/vba-next-libretro
 games-emulation/vbam-libretro
 games-emulation/yabause-libretro
