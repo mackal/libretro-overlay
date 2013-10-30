@@ -43,5 +43,7 @@ games-emulation/retroarch"
 src_install() {
 	local retrodir="$(games_get_libdir)/libretro"
 	dodir ${retrodir}
-	install -m0755 "dist/info/*.info" "${D}${retrodir}"
+	for i in dist/info/*.info ; do
+		install -m0644 "${i}" "${D}${retrodir}"
+	done
 }
