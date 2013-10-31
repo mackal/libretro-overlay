@@ -38,6 +38,7 @@ games-emulation/stella-libretro
 games-emulation/vba-next-libretro
 games-emulation/vbam-libretro
 games-emulation/yabause-libretro
+games-emulation/meteor-libretro
 games-fps/tyrquake-libretro
 games-fps/prboom-libretro
 games-emulation/retroarch"
