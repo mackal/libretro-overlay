@@ -25,7 +25,6 @@ src_prepare() {
 		-e 's/ -O[23]/ /' \
 		-e 's/ -fomit-frame-pointer/ /' \
 		-e 's/ -funroll-loops/ /' \
-		-e 's/ -ffast-math/ /' \
 		-e 's/flags :=/flags +=/' \
 		-e '1iflags := ${CXXFLAGS}' \
 		Makefile || die "sed failed"

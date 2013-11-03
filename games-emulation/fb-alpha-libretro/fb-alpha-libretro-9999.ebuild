@@ -28,7 +28,6 @@ src_prepare() {
 		-e 's/ -O[23]/ /' \
 		-e 's/ -fomit-frame-pointer/ /' \
 		-e 's/ -funroll-loops/ /' \
-		-e 's/ -ffast-math/ /' \
 		makefile.libretro || die "sed failed"
 }
 
