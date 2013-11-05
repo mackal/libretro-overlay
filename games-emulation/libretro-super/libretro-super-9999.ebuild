@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/libretro/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="opengl"
 
 DEPEND=""
 RDEPEND="games-emulation/bnes-libretro
@@ -28,7 +28,6 @@ games-emulation/gambatte-libretro
 games-emulation/genesis-plus-gx-libretro
 games-emulation/handy-libretro
 games-emulation/mednafen-libretro
-games-emulation/mupen64plus-libretro
 games-emulation/nestopia-libretro
 games-emulation/picodrive-libretro
 games-emulation/quicknes-libretro
@@ -41,7 +40,8 @@ games-emulation/yabause-libretro
 games-emulation/meteor-libretro
 games-fps/tyrquake-libretro
 games-fps/prboom-libretro
-games-emulation/retroarch"
+games-emulation/retroarch
+opengl? ( games-emulation/mupen64plus-libretro )"
 
 src_install() {
 	local retrodir="${GAMES_DATADIR}/retroarch/info"
