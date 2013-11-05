@@ -29,7 +29,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -f Makefile.libretro TARGET=${PN//-/_}.so
+	emake -f Makefile.libretro TARGET=${PN//-/_}.so DESMUME_JIT=1
 }
 
 src_install() {
