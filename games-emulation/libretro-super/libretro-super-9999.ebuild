@@ -41,7 +41,8 @@ games-emulation/meteor-libretro
 games-fps/tyrquake-libretro
 games-fps/prboom-libretro
 games-emulation/retroarch
-opengl? ( games-emulation/mupen64plus-libretro )"
+opengl? ( games-emulation/mupen64plus-libretro
+		games-misc/libretro-shaders )"
 
 src_install() {
 	local retrodir="${GAMES_DATADIR}/retroarch/info"
