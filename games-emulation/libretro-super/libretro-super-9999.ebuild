@@ -41,6 +41,7 @@ games-emulation/meteor-libretro
 games-fps/tyrquake-libretro
 games-fps/prboom-libretro
 games-emulation/retroarch
+games-emulation/mame2013-libretro
 opengl? ( games-emulation/mupen64plus-libretro
 		games-misc/libretro-shaders )"
 
