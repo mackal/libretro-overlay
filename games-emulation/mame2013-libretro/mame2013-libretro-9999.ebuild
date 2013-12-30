@@ -21,7 +21,7 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 EGIT_SOURCEDIR=${S}
-S="${WORKDIR}/${P}/0150"
+S="${WORKDIR}/${P}/0151"
 
 src_prepare() {
 	sed -i \
