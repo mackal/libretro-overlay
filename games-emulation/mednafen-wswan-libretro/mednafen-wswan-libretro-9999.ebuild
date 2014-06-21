@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/libretro/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gba +pcfx +lynx snes"
+IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -29,19 +29,12 @@ src_prepare() {
 }
 
 src_compile() {
-	for i in gba pcfx lynx snes; do
-		if use ${i} ; then
-			emake core=${i//-/_} TARGET=mednafen_${i//-/_}_libretro.so
-			emake clean #build system weird
-		fi
-	done
+	emake TARGET=${PN//-/_}.so
 }
 
 src_install() {
 	local retrodir="$(games_get_libdir)/libretro"
 	dodir ${retrodir}
-	for i in mednafen_*_libretro.so ; do
-		install -m0755 "${i}" "${D}${retrodir}"
-	done
+	install -m0755 "${PN//-/_}.so" "${D}${retrodir}"
 	prepgamesdirs
 }

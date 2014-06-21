@@ -32,6 +32,7 @@ games-emulation/mednafen-ngp-libretro
 games-emulation/mednafen-pce-fast-libretro
 games-emulation/mednafen-psx-libretro
 games-emulation/mednafen-vb-libretro
+games-emulation/mednafen-wswan-libretro
 games-emulation/nestopia-libretro
 games-emulation/picodrive-libretro
 games-emulation/quicknes-libretro
