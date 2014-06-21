@@ -4,11 +4,7 @@
 	<use>
 		<flag name="gba">Enables the GBA emulation core</flag>
 		<flag name="snes">Enables the SNES emulation core</flag>
-		<flag name="psx">Enables the PSX emulation core</flag>
 		<flag name="wswan">Enables the WonderSwan emulation core</flag>
-		<flag name="ngp">Enables the Neo Geo Pocket emulation core</flag>
-		<flag name="vb">Enables the VirtualBoy emulation core</flag>
-		<flag name="pce-fast">Enables the PC Engine emulation core</flag>
 		<flag name="pcfx">Enables the PC-FX emulation core</flag>
 		<flag name="lynx">Enables the Atari Lynx emulation core</flag>
 	</use>

@@ -28,6 +28,10 @@ games-emulation/gambatte-libretro
 games-emulation/genesis-plus-gx-libretro
 games-emulation/handy-libretro
 games-emulation/mednafen-libretro
+games-emulation/mednafen-ngp-libretro
+games-emulation/mednafen-pce-fast-libretro
+games-emulation/mednafen-psx-libretro
+games-emulation/mednafen-vb-libretro
 games-emulation/nestopia-libretro
 games-emulation/picodrive-libretro
 games-emulation/quicknes-libretro
