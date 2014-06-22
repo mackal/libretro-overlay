@@ -27,11 +27,11 @@ games-emulation/fceumm-libretro
 games-emulation/gambatte-libretro
 games-emulation/genesis-plus-gx-libretro
 games-emulation/handy-libretro
-games-emulation/mednafen-ngp-libretro
-games-emulation/mednafen-pce-fast-libretro
-games-emulation/mednafen-psx-libretro
-games-emulation/mednafen-vb-libretro
-games-emulation/mednafen-wswan-libretro
+games-emulation/beetle-ngp-libretro
+games-emulation/beetle-pce-fast-libretro
+games-emulation/beetle-psx-libretro
+games-emulation/beetle-vb-libretro
+games-emulation/beetle-wswan-libretro
 games-emulation/nestopia-libretro
 games-emulation/picodrive-libretro
 games-emulation/quicknes-libretro
