@@ -31,6 +31,7 @@ games-emulation/beetle-ngp-libretro
 games-emulation/beetle-pce-fast-libretro
 games-emulation/beetle-psx-libretro
 games-emulation/beetle-vb-libretro
+games-emulation/beetle-pcfx-libretro
 games-emulation/beetle-wswan-libretro
 games-emulation/nestopia-libretro
 games-emulation/picodrive-libretro
