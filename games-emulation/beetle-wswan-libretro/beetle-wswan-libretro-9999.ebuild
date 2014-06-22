@@ -19,6 +19,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+SONAME=${PN//beetle/mednafen}
 
 src_prepare() {
 	sed -i \
@@ -29,12 +30,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake TARGET=${PN//-/_}.so
+	emake TARGET=${SONAME//-/_}.so
 }
 
 src_install() {
 	local retrodir="$(games_get_libdir)/libretro"
 	dodir ${retrodir}
-	install -m0755 "${PN//-/_}.so" "${D}${retrodir}"
+	install -m0755 "${SONAME//-/_}.so" "${D}${retrodir}"
 	prepgamesdirs
 }
