@@ -32,6 +32,8 @@ games-emulation/beetle-pce-fast-libretro
 games-emulation/beetle-psx-libretro
 games-emulation/beetle-vb-libretro
 games-emulation/beetle-gba-libretro
+games-emulation/beetle-bsnes-libretro
+games-emulation/beetle-lynx-libretro
 games-emulation/beetle-supergrafx-libretro
 games-emulation/beetle-pcfx-libretro
 games-emulation/beetle-wswan-libretro
