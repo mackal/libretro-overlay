@@ -1,17 +1,17 @@
 diff --git a/Makefile b/Makefile
-index f31ff77..6cab082 100644
+index 196482e..d5bd6f6 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -300,7 +300,7 @@ ifeq ($(HAVE_CG), 1)
+@@ -382,7 +382,7 @@ ifeq ($(HAVE_CG), 1)
     ifeq ($(OSX), 1)
        LIBS += -framework Cg
     else
 -      LIBS += -lCg -lCgGL
 +      LIBS += -I/opt/nvidia-cg-toolkit/include -lCg -lCgGL
-    endif
- endif
- 
-@@ -483,8 +483,8 @@ install: $(TARGET)
+       ifeq ($(HAVE_D3D9),1)
+          LIBS += -lcgD3D9
+       endif
+@@ -583,8 +583,8 @@ install: $(TARGET)
  	rm -f $(OBJDIR)/git_version.o
  	mkdir -p $(DESTDIR)$(PREFIX)/bin 2>/dev/null || /bin/true
  	mkdir -p $(DESTDIR)$(GLOBAL_CONFIG_DIR) 2>/dev/null || /bin/true
@@ -22,7 +22,7 @@ index f31ff77..6cab082 100644
  	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/bin 
  	install -m755 tools/cg2glsl.py $(DESTDIR)$(PREFIX)/bin/retroarch-cg2glsl
  	install -m644 retroarch.cfg $(DESTDIR)$(GLOBAL_CONFIG_DIR)/retroarch.cfg
-@@ -492,8 +492,8 @@ install: $(TARGET)
+@@ -592,8 +592,8 @@ install: $(TARGET)
  	install -m644 docs/retroarch-cg2glsl.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retroarch-joyconfig.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retrolaunch.1 $(DESTDIR)$(MAN_DIR)
@@ -34,10 +34,10 @@ index f31ff77..6cab082 100644
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
 diff --git a/qb/config.libs.sh b/qb/config.libs.sh
-index 1719b6d..8ea1e08 100644
+index 5cd34e1..7d069f5 100644
 --- a/qb/config.libs.sh
 +++ b/qb/config.libs.sh
-@@ -160,6 +160,12 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
+@@ -202,6 +202,12 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
        check_lib CG "-framework Cg" cgCreateContext
     else
        # On some distros, -lCg doesn't link against -lstdc++ it seems ...
