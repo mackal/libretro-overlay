@@ -25,19 +25,25 @@ index fd46ec1..0f80e18 100644
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
 diff --git a/qb/config.libs.sh b/qb/config.libs.sh
-index 6f58ad5..ba04194 100644
+index 6f58ad5..8a77f60 100644
 --- a/qb/config.libs.sh
 +++ b/qb/config.libs.sh
-@@ -213,6 +213,9 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
-    elif [ "$OS" = 'Win32' ]; then
-       check_lib_cxx CG -lcg cgCreateContext
-       [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lcg -lcgGL'
-+   elif [ $PKG_CONF_PATH --exists nvidia-cg-toolkit ]; then
-+       # Gentoo installs to /opt but includes pkg-config
-+       [ "$HAVE_CF" = 'yes' ] && CG_LIBS='$($PKG_CONF_PATH --cflags) -lCg -lCgGL'
-    else
-       # On some distros, -lCg doesn't link against -lstdc++ it seems ...
-       check_lib_cxx CG -lCg cgCreateContext
+@@ -219,6 +219,15 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
+       [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lCg -lCgGL'
+    fi
+ 
++   # Gentoo installs to /opt
++   if [ "$HAVE_CG" = 'no' ]; then
++       check_pkgconf CG nvidia-cg-toolkit
++       # Setup scripts don't work with how check_pkgconf would set it up, just fix them here
++       if [ "$HAVE_CG" = 'yes' ]; then
++           CG_LIBS='$($PKG_CONF_PATH --cflags) -lCg -lCgGL'
++       fi
++   fi
++
+    # fix undefined variables
+    PKG_CONF_USED="$PKG_CONF_USED CG"
+ else
 diff --git a/qb/qb.params.sh b/qb/qb.params.sh
 index b23d91d..464d4c0 100644
 --- a/qb/qb.params.sh
