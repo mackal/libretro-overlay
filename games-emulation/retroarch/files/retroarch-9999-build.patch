@@ -24,11 +24,23 @@ index fd46ec1..0f80e18 100644
  
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
+diff --git a/Makefile.common b/Makefile.common
+index a32e481..9363991 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -470,6 +470,7 @@ ifeq ($(HAVE_CG), 1)
+ 	DEFINES += -DHAVE_CG
+    OBJ += gfx/shader_cg.o
+    LIBS += $(CG_LIBS)
++   CFLAGS += $(CG_CFLAGS)
+ endif
+ 
+ ifeq ($(HAVE_D3D9), 1)
 diff --git a/qb/config.libs.sh b/qb/config.libs.sh
-index 6f58ad5..5029ced 100644
+index 6f58ad5..4d1fcee 100644
 --- a/qb/config.libs.sh
 +++ b/qb/config.libs.sh
-@@ -207,16 +207,25 @@ if [ "$OS" = 'Win32' ]; then
+@@ -207,16 +207,21 @@ if [ "$OS" = 'Win32' ]; then
  fi
  
  if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
@@ -42,12 +54,8 @@ index 6f58ad5..5029ced 100644
 -      # On some distros, -lCg doesn't link against -lstdc++ it seems ...
 -      check_lib_cxx CG -lCg cgCreateContext
 -      [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lCg -lCgGL'
-+   # Gentoo installs to /opt
-+   check_pkgconf CG nvidia-cg-toolkit
-+   # Setup scripts don't work with how check_pkgconf would set it up, just fix them here
-+   if [ "$HAVE_CG" = 'yes' ]; then
-+       CG_LIBS='$($PKG_CONF_PATH --cflags nvidia-cg-toolkit) -lCg -lCgGL'
-+   fi
++   # Gentoo installs to /opt, but provides pc
++   check_pkgconf CG nvidia-cg-toolkit-gl
 +
 +   if [ "$HAVE_CG" = 'no' ]; then
 +       if [ "$OS" = 'Darwin' ]; then
