@@ -1,17 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 196482e..d5bd6f6 100644
+index fd46ec1..0f80e18 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -382,7 +382,7 @@ ifeq ($(HAVE_CG), 1)
-    ifeq ($(OSX), 1)
-       LIBS += -framework Cg
-    else
--      LIBS += -lCg -lCgGL
-+      LIBS += -I/opt/nvidia-cg-toolkit/include -lCg -lCgGL
-       ifeq ($(HAVE_D3D9),1)
-          LIBS += -lcgD3D9
-       endif
-@@ -583,8 +583,8 @@ install: $(TARGET)
+@@ -150,8 +150,8 @@ install: $(TARGET)
  	rm -f $(OBJDIR)/git_version.o
  	mkdir -p $(DESTDIR)$(PREFIX)/bin 2>/dev/null || /bin/true
  	mkdir -p $(DESTDIR)$(GLOBAL_CONFIG_DIR) 2>/dev/null || /bin/true
@@ -22,7 +13,7 @@ index 196482e..d5bd6f6 100644
  	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/bin 
  	install -m755 tools/cg2glsl.py $(DESTDIR)$(PREFIX)/bin/retroarch-cg2glsl
  	install -m644 retroarch.cfg $(DESTDIR)$(GLOBAL_CONFIG_DIR)/retroarch.cfg
-@@ -592,8 +592,8 @@ install: $(TARGET)
+@@ -159,8 +159,8 @@ install: $(TARGET)
  	install -m644 docs/retroarch-cg2glsl.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retroarch-joyconfig.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retrolaunch.1 $(DESTDIR)$(MAN_DIR)
@@ -34,22 +25,19 @@ index 196482e..d5bd6f6 100644
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
 diff --git a/qb/config.libs.sh b/qb/config.libs.sh
-index 5cd34e1..7d069f5 100644
+index 6f58ad5..ba04194 100644
 --- a/qb/config.libs.sh
 +++ b/qb/config.libs.sh
-@@ -202,6 +202,12 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
-       check_lib CG "-framework Cg" cgCreateContext
+@@ -213,6 +213,9 @@ if [ "$HAVE_OPENGL" != 'no' ] && [ "$HAVE_GLES" != 'yes' ]; then
+    elif [ "$OS" = 'Win32' ]; then
+       check_lib_cxx CG -lcg cgCreateContext
+       [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lcg -lcgGL'
++   elif [ $PKG_CONF_PATH --exists nvidia-cg-toolkit ]; then
++       # Gentoo installs to /opt but includes pkg-config
++       [ "$HAVE_CF" = 'yes' ] && CG_LIBS='$($PKG_CONF_PATH --cflags) -lCg -lCgGL'
     else
        # On some distros, -lCg doesn't link against -lstdc++ it seems ...
-+      if [ -d /usr/lib64 ]; then
-+          [ -d /opt/nvidia-cg-toolkit/lib64 ] && add_library_dirs /opt/nvidia-cg-toolkit/lib64
-+      else
-+          [ -d /opt/nvidia-cg-toolkit/lib ] && add_library_dirs /opt/nvidia-cg-toolkit/lib
-+      fi
-+      [ -d /opt/nvidia-cg-toolkit/include ] && add_include_dirs /opt/nvidia-cg-toolkit/include
        check_lib_cxx CG -lCg cgCreateContext
-    fi
- else
 diff --git a/qb/qb.params.sh b/qb/qb.params.sh
 index b23d91d..464d4c0 100644
 --- a/qb/qb.params.sh
