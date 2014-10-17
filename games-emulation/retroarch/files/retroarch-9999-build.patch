@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index fd46ec1..0f80e18 100644
+index 8134251..e55f6f4 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -150,8 +150,8 @@ install: $(TARGET)
+@@ -143,16 +143,16 @@ install: $(TARGET)
  	rm -f $(OBJDIR)/git_version.o
  	mkdir -p $(DESTDIR)$(PREFIX)/bin 2>/dev/null || /bin/true
  	mkdir -p $(DESTDIR)$(GLOBAL_CONFIG_DIR) 2>/dev/null || /bin/true
@@ -13,10 +13,9 @@ index fd46ec1..0f80e18 100644
  	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/bin 
  	install -m755 tools/cg2glsl.py $(DESTDIR)$(PREFIX)/bin/retroarch-cg2glsl
  	install -m644 retroarch.cfg $(DESTDIR)$(GLOBAL_CONFIG_DIR)/retroarch.cfg
-@@ -159,8 +159,8 @@ install: $(TARGET)
+ 	install -m644 docs/retroarch.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retroarch-cg2glsl.1 $(DESTDIR)$(MAN_DIR)
  	install -m644 docs/retroarch-joyconfig.1 $(DESTDIR)$(MAN_DIR)
- 	install -m644 docs/retrolaunch.1 $(DESTDIR)$(MAN_DIR)
 -	install -m644 media/retroarch.png $(DESTDIR)$(PREFIX)/share/pixmaps
 -	install -m644 media/retroarch.svg $(DESTDIR)$(PREFIX)/share/pixmaps
 +	install -m644 media/retroarch.png $(DESTDIR)/usr/share/pixmaps
@@ -25,19 +24,19 @@ index fd46ec1..0f80e18 100644
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/retroarch
 diff --git a/Makefile.common b/Makefile.common
-index a32e481..9363991 100644
+index aa3d636..6f7ac50 100644
 --- a/Makefile.common
 +++ b/Makefile.common
-@@ -470,6 +470,7 @@ ifeq ($(HAVE_CG), 1)
+@@ -489,6 +489,7 @@ ifeq ($(HAVE_CG), 1)
  	DEFINES += -DHAVE_CG
-    OBJ += gfx/shader_cg.o
+    OBJ += gfx/shader/shader_gl_cg.o
     LIBS += $(CG_LIBS)
 +   CFLAGS += $(CG_CFLAGS)
  endif
  
  ifeq ($(HAVE_D3D9), 1)
 diff --git a/qb/config.libs.sh b/qb/config.libs.sh
-index 6f58ad5..4d1fcee 100644
+index fc82e7b..5b6d4a9 100644
 --- a/qb/config.libs.sh
 +++ b/qb/config.libs.sh
 @@ -207,16 +207,21 @@ if [ "$OS" = 'Win32' ]; then
@@ -58,17 +57,17 @@ index 6f58ad5..4d1fcee 100644
 +   check_pkgconf CG nvidia-cg-toolkit-gl
 +
 +   if [ "$HAVE_CG" = 'no' ]; then
-+       if [ "$OS" = 'Darwin' ]; then
-+          check_lib CG "-framework Cg" cgCreateContext
-+          [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-framework Cg'
-+       elif [ "$OS" = 'Win32' ]; then
-+          check_lib_cxx CG -lcg cgCreateContext
-+          [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lcg -lcgGL'
-+       else
-+          # On some distros, -lCg doesn't link against -lstdc++ it seems ...
-+          check_lib_cxx CG -lCg cgCreateContext
-+          [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lCg -lCgGL'
-+       fi
++      if [ "$OS" = 'Darwin' ]; then
++         check_lib CG "-framework Cg" cgCreateContext
++         [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-framework Cg'
++      elif [ "$OS" = 'Win32' ]; then
++         check_lib_cxx CG -lcg cgCreateContext
++         [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lcg -lcgGL'
++      else
++         # On some distros, -lCg doesn't link against -lstdc++ it seems ...
++         check_lib_cxx CG -lCg cgCreateContext
++         [ "$HAVE_CG" = 'yes' ] && CG_LIBS='-lCg -lCgGL'
++      fi
     fi
  
     # fix undefined variables
