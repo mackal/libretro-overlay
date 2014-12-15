@@ -30,6 +30,7 @@ src_prepare() {
 		-e 's/^CFLAGS =/CFLAGS +=/' \
 		-e '/^CCOMFLAGS += -O/d' \
 		Makefile.libretro || die "sed failed"
+	sed -i -e '9i#define OF(x) x' src/lib/zlib/compress.c || die "sed failed"
 }
 
 src_compile() {
