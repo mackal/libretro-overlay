@@ -7,10 +7,10 @@ EAPI=5
 inherit games git-2
 
 DESCRIPTION="${PN} core"
-HOMEPAGE="https://github.com/libretro/libretro-mame"
+HOMEPAGE="https://github.com/libretro/mame"
 SRC_URI=""
 
-EGIT_REPO_URI="git://github.com/libretro/libretro-mame.git"
+EGIT_REPO_URI="git://github.com/libretro/mame.git"
 
 LICENSE="GPL-3"
 SLOT="0"
