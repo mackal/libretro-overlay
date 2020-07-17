@@ -1,0 +1,77 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+games-emulation/bsnes-libretro:profile_accuracy - Enable the accuracy profile
+games-emulation/bsnes-libretro:profile_balanced - Enable the balanced profile
+games-emulation/bsnes-libretro:profile_performance - Enable the performance profile
+games-emulation/libretro-meta:2048 - adds games-emulation/2048-libretro as dependency
+games-emulation/libretro-meta:4do - adds games-emulation/4do-libretro as dependency
+games-emulation/libretro-meta:bnes - adds games-emulation/bnes-libretro as dependency
+games-emulation/libretro-meta:bsnes - adds games-emulation/bsnes-libretro as dependency
+games-emulation/libretro-meta:desmume - adds games-emulation/desmume-libretro as dependency
+games-emulation/libretro-meta:fb-alpha - adds games-emulation/fb-alpha-libretro as dependency
+games-emulation/libretro-meta:fceu-next - adds games-emulation/fceu-next-libretro as dependency
+games-emulation/libretro-meta:gambatte - adds games-emulation/gambatte-libretro as dependency
+games-emulation/libretro-meta:genplus - adds games-emulation/genplus-libretro as dependency
+games-emulation/libretro-meta:handy - adds games-emulation/handy-libretro as dependency
+games-emulation/libretro-meta:imame4all - adds games-emulation/imame4all-libretro as dependency
+games-emulation/libretro-meta:mame - adds games-emulation/mame-libretro as dependency
+games-emulation/libretro-meta:mednafen-gba - adds games-emulation/mednafen-gba-libretro as dependency
+games-emulation/libretro-meta:mednafen-ngp - adds games-emulation/mednafen-ngp-libretro as dependency
+games-emulation/libretro-meta:mednafen-pce-fast - adds games-emulation/mednafen-pce-fast-libretro as dependency
+games-emulation/libretro-meta:mednafen-psx - adds games-emulation/mednafen-psx-libretro as dependency
+games-emulation/libretro-meta:mednafen-snes - adds games-emulation/mednafen-snes-libretro as dependency
+games-emulation/libretro-meta:mednafen-supergrafx - adds games-emulation/mednafen-supergrafx-libretro as dependency
+games-emulation/libretro-meta:mednafen-vb - adds games-emulation/mednafen-vb-libretro as dependency
+games-emulation/libretro-meta:mednafen-wswan - adds games-emulation/mednafen-wswan-libretro as dependency
+games-emulation/libretro-meta:meteor - adds games-emulation/meteor-libretro as dependency
+games-emulation/libretro-meta:mupen64plus - adds games-emulation/mupen64plus-libretro as dependency
+games-emulation/libretro-meta:nestopia - adds games-emulation/nestopia-libretro as dependency
+games-emulation/libretro-meta:nxengine - adds games-emulation/nxengine-libretro as dependency
+games-emulation/libretro-meta:pcsx-rearmed - adds games-emulation/pcsx-rearmed-libretro as dependency
+games-emulation/libretro-meta:picodrive - adds games-emulation/picodrive-libretro as dependency
+games-emulation/libretro-meta:pocketsnes - adds games-emulation/pocketsnes-libretro as dependency
+games-emulation/libretro-meta:prboom - adds games-emulation/prboom-libretro as dependency
+games-emulation/libretro-meta:prosystem - adds games-emulation/prosystem-libretro as dependency
+games-emulation/libretro-meta:quicknes - adds games-emulation/quicknes-libretro as dependency
+games-emulation/libretro-meta:scummvm - adds games-emulation/scummvm-libretro as dependency
+games-emulation/libretro-meta:snes9x - adds games-emulation/snes9x-libretro as dependency
+games-emulation/libretro-meta:snes9x-next - adds games-emulation/snes9x-next-libretro as dependency
+games-emulation/libretro-meta:stella - adds games-emulation/stella-libretro as dependency
+games-emulation/libretro-meta:tgbdual - adds games-emulation/tgbdual-libretro as dependency
+games-emulation/libretro-meta:tyrquake - adds games-emulation/tyrquake-libretro as dependency
+games-emulation/libretro-meta:vba-next - adds games-emulation/vba-next-libretro as dependency
+games-emulation/libretro-meta:vbam - adds games-emulation/vbam-libretro as dependency
+games-emulation/libretro-meta:yabause - adds games-emulation/yabause-libretro as dependency
+games-emulation/retroarch:alsa - Enable ALSA support
+games-emulation/retroarch:autoconfig - Adds premade joystick autoconfiguration and changes default retroarch.cfg accordingly
+games-emulation/retroarch:cg - Enable Cg shader support
+games-emulation/retroarch:cores - Changes default retroarch.cfg to the standardpath of the libretro* ebuilds
+games-emulation/retroarch:egl - Enable EGL context support
+games-emulation/retroarch:fbo - Enable render-to-texture (FBO) support
+games-emulation/retroarch:ffmpeg - Enable FFmpeg recording support
+games-emulation/retroarch:gles - Use GLESv2 instead of OpenGL
+games-emulation/retroarch:gles3 - Enable OpenGLES3 support
+games-emulation/retroarch:glui - Enable GLUI menu
+games-emulation/retroarch:jack - Enable JACK support
+games-emulation/retroarch:kms - Enable KMS context support
+games-emulation/retroarch:lakka - Enable Lakka menu
+games-emulation/retroarch:netplay - Enable netplay support
+games-emulation/retroarch:openal - Enable OpenAL support
+games-emulation/retroarch:opengl - Enable OpenGL support
+games-emulation/retroarch:openvg - Enable OpenVG support
+games-emulation/retroarch:oss - Enable OSS support
+games-emulation/retroarch:pulseaudio - Enable PulseAudio support
+games-emulation/retroarch:python - Enable Python 3 support for shaders
+games-emulation/retroarch:sdl - SDL support
+games-emulation/retroarch:sdl2 - SDL2 support
+games-emulation/retroarch:threads - Threading support
+games-emulation/retroarch:truetype - Enable FreeType support
+games-emulation/retroarch:udev - Udev/Evdev gamepad support
+games-emulation/retroarch:v4l2 - Enable video4linux2 support
+games-emulation/retroarch:x11 - Enable x11 support
+games-emulation/retroarch:xinerama - Enable Xinerama support
+games-emulation/retroarch:xml - Enable libxml2 support
+games-emulation/retroarch:xv - Enable XVideo support
+games-emulation/retroarch:zlib - Enable zlib support (ZIP extract, PNG decoding/encoding)
