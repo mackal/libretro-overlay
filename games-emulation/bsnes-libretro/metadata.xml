@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<use>
-		<flag name='profile_accuracy'>Enables the accuracy emulation core, slowest</flag>
-		<flag name='profile_balanced'>Enables the balanced emulation core, faster than accuracy, but not as accurate</flag>
-		<flag name='profile_performance'>Enables the performance emulation core, fastest</flag>
-	</use>
-</pkgmetadata>
