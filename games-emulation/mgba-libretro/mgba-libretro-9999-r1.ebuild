@@ -19,9 +19,9 @@ CMAKE_WARN_UNUSED_CLI=1
 #
 # Since the latter tracks the former, the two superficially resemble one other.
 # All similarities end at their build systems, however. The former ships with:
-# 
+#
 # * A dynamic "cmake"-based build system reading "CMakeLists.txt" as input and
-#   writing a "Makefile" as output. This system provides out-of-the-box support 
+#   writing a "Makefile" as output. This system provides out-of-the-box support
 #   for compiling the mGBA Libretro core via the "-DBUILD_LIBRETRO=1"
 #   configuration-time option.
 #
@@ -35,14 +35,14 @@ CMAKE_WARN_UNUSED_CLI=1
 #   "-DBUILD_LIBRETRO=1"), this system fails to compile on enabling this option.
 # * An undocumented static "make"-based build system reading "Makefile" which
 #   reads "Makefile.libretro" as input. Unlike the prior system, this system
-#   actually succeeds in compiling the mGBA Libretro core. Unsurprisingly, this 
+#   actually succeeds in compiling the mGBA Libretro core. Unsurprisingly, this
 #   is the system used by the official "libretro-super" project to build this
 #   core. Unfortunately, this system provides substantially fewer
 #   configuration-time options than the prior system.
 #
 # There exist two options, therefore: "cmake" in the official mGBA repository
 # and "make" in the Libretro mGBA repository. Since the former successfully
-# compiles the mGBA Libretro core *AND* provides substantially more 
+# compiles the mGBA Libretro core *AND* provides substantially more
 # configuration-time options, we prefer the former. Interestingly, this
 # archlinux PKGBUILD for the mGBA Libretro core has made a similar choice:
 #
@@ -58,24 +58,21 @@ KEYWORDS=""
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="epoxy ffmpeg gles2 imagemagick lto lzma +opengl pgo pgopost png +zip zlib"
+IUSE="epoxy ffmpeg gles2 imagemagick lto +opengl pgo pgopost png"
 REQUIRED_USE="
 	epoxy? ( gles2 )
 	gles2? ( opengl )
 	pgopost? ( pgo )
-	png? ( zlib )
 "
 
 DEPEND="
 	epoxy? ( media-libs/libepoxy:0= )
 	ffmpeg? ( virtual/ffmpeg:0= )
 	imagemagick? ( media-gfx/imagemagick:0= )
-	lzma? ( app-arch/xz-utils:0= )
 	png? ( media-libs/libpng:0= )
 	opengl? ( media-libs/mesa:0=[gles2?] )
 	png? ( media-libs/libpng:0= )
-	zip? ( dev-libs/libzip:0= )
-	zlib? ( sys-libs/zlib:0= )
+	sys-libs/zlib[minizip]
 "
 RDEPEND="${DEPEND}
 		games-emulation/libretro-info"
@@ -121,8 +118,10 @@ src_configure() {
 		-DBUILD_PGO=$(usex pgo ON OFF)
 		-DPGO_STAGE_2=$(usex pgopost ON OFF)
 		-DUSE_PNG=$(usex png ON OFF)
-		-DUSE_LIBZIP=$(usex zip ON OFF)
-		-DUSE_ZLIB=$(usex zlib ON OFF)
+		-DUSE_LIBZIP=OFF
+		-DUSE_LZMA=OFF
+		-DUSE_MINIZIP=ON
+		-DUSE_ZLIB=ON
 	)
 	cmake-utils_src_configure
 }

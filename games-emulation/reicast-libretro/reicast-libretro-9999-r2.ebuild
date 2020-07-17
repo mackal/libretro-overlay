@@ -17,12 +17,12 @@ IUSE="gles2 naomi"
 DEPEND=""
 RDEPEND="${DEPEND}
 		games-emulation/libretro-info"
+LIBRETRO_CORE_NAME=( "flycast" )
 
 src_unpack() {
 	# We need to add the different core names to the array
 	# in order to let the eclass handle the install
-	LIBRETRO_CORE_NAME+=( "${PN%-libretro}" )
-	use naomi && LIBRETRO_CORE_NAME+=( "${PN%-libretro}"_naomi )
+	use naomi && LIBRETRO_CORE_NAME+=( "flycast_naomi" )
 	libretro-core_src_unpack
 }
 

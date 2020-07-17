@@ -5,7 +5,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7,3_8} )
 
 LIBRETRO_REPO_NAME="libretro/RetroArch"
 inherit flag-o-matic libretro python-single-r1
@@ -81,8 +81,8 @@ RDEPEND="
 	overlays? ( games-emulation/common-overlays:0= )
 	pulseaudio? ( media-sound/pulseaudio:0= )
 	python? ( ${PYTHON_DEPS} )
-	qt5? ( 
-	        dev-qt/qtcore:5 
+	qt5? (
+	        dev-qt/qtcore:5
 	        dev-qt/qtgui:5
 	        dev-qt/qtopengl:5
 	        dev-qt/qtwidgets:5
@@ -121,7 +121,6 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}/${P}-build.patch" \
-		"${FILESDIR}/${P}-python.patch" \
 		"${FILESDIR}/${P}-custom_fpu.patch"
 
 	# If Python support is enabled, use the currently enabled "python" binary.
